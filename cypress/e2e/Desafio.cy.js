@@ -46,18 +46,15 @@ describe("Challenges", () => {
   });
 
   it("Login with registered user", () => {
-    home.signinSignupButton().click();
-    signin.loginEmail().type(registeredUser.email);
-    signin.loginPassword().type(registeredUser.password);
-    signin.loginButton().click();
-    home.loggedAs().should("contain.text", registeredUser.fullName);
+    cy.login(registeredUser);
   });
 
   it("Login with unregistered user", () => {
-    home.signinSignupButton().click();
-    signin.loginEmail().type(userToFailLogin.email);
-    signin.loginPassword().type(userToFailLogin.password);
-    signin.loginButton().click();
-    cy.contains("Your email or password is incorrect!").should("be.visible");
+    cy.login(userToFailLogin, false);
+  });
+  it("Shopping cart", () => {
+    cy.login(registeredUser);
+    home.products().click();
+    // home.cartButton().click();
   });
 });

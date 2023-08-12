@@ -1,25 +1,16 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const { Home } = require("../e2e/pages/Home/Home");
+const { Signin } = require("../e2e/pages/Signin/Signin");
+
+Cypress.Commands.add("login", (user, shouldSucceed = true) => {
+  const home = new Home();
+  const signin = new Signin();
+
+  home.signinSignupButton().click();
+  signin.loginEmail().type(user.email);
+  signin.loginPassword().type(user.password);
+  signin.loginButton().click();
+
+  shouldSucceed
+    ? home.loggedAs().should("contain.text", user.fullName)
+    : cy.contains("Your email or password is incorrect!").should("be.visible");
+});
