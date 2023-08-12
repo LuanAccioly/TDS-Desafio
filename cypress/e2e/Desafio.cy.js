@@ -1,6 +1,8 @@
 import { Home } from "./pages/Home/Home";
 import { Signin } from "./pages/Signin/Signin";
 import { Signup } from "./pages/Signup/Signup";
+import { Products } from "./pages/Products/Products";
+import { Cart } from "./pages/Cart/Cart";
 import {
   userToRegister,
   registeredUser,
@@ -10,6 +12,8 @@ import {
 const home = new Home();
 const signin = new Signin();
 const signup = new Signup();
+const products = new Products();
+const cart = new Cart();
 
 beforeEach(() => {
   cy.visit("/");
@@ -52,9 +56,40 @@ describe("Challenges", () => {
   it("Login with unregistered user", () => {
     cy.login(userToFailLogin, false);
   });
-  it("Shopping cart", () => {
+  it.only("Shopping cart", () => {
+    let productName;
     cy.login(registeredUser);
-    home.products().click();
-    // home.cartButton().click();
+
+    // Adicionando produto ao carrinho
+    home.productsButton().click();
+    products.addProductToCart(1).click();
+    products.continueShoppingButton().click();
+
+    // Verificando se o produto foi adicionado ao carrinho corretamente
+    products.getProductTitle(1).then(($productTitle) => {
+      productName = $productTitle.text().trim();
+      home.cartButton().click();
+      cart.getItemName(1).should("contain.text", productName);
+    });
+    cart.procceedButton().click();
+
+    // Veriricando dados de entrega
+    cart.deliveryName().should("contain", registeredUser.firstName);
+    cart.deliveryAddress().should("contain", registeredUser.address);
+    cart.deliveryCity().should("contain", registeredUser.city);
+    cart.deliveryCountry().should("contain", registeredUser.country);
+    cart.deliveryPhone().should("contain", registeredUser.mobileNumber);
+    cart.placeOrderButton().click();
+
+    // Informando dados do cartão
+    cart.nameOnCard().type(registeredUser.card.name);
+    cart.cardNumber().type(registeredUser.card.number);
+    cart.cvv().type(registeredUser.card.cvv);
+    cart.expiryMonth().type(registeredUser.card.expiryMonth);
+    cart.expiryYear().type(registeredUser.card.expiryYear);
+    cart.payConfirmButton().click();
+
+    // Verificando confirmação do pedido
+    cart.orderConfirmation().should("contain", "Order Placed!");
   });
 });
