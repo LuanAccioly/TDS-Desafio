@@ -9,6 +9,10 @@ export class Home {
     return cy.contains("Cart");
   }
 
+  productsButton() {
+    return cy.contains("Products");
+  }
+
   deleteAccountButton() {
     return cy.contains("Delete Account");
   }
