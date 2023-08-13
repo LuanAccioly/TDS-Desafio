@@ -18,6 +18,8 @@
 
 # TDS Challenge
 
+> Developed to TDS Company during job selection process
+
 ## How to Run
 
 Follow these steps to set up and run this project:
@@ -38,16 +40,16 @@ Follow these steps to set up and run this project:
 ## Challenge Specification
 Para o site  [automationexercise](https://www.automationexercise.com/), realizar as seguintes atividades: 
 
-1. Montar um plano de testes e uma estratégia de testes que cubram as funcionalidades de "Login" e "Cadastro" e processo de compra no site 
-2. Descrever as atividades de testes usadas no planejamento dos testes 
-3. Preparar um script automatizado com teste de regressão para o site citado, contendo as duas condições de testes abordadas: 
+1. Create a test plan and a testing strategy that cover the functionalities of "Login," "Registration," and the "Purchasing Process" on the site.
+2. Describe the testing activities used in the test planning.
+3. Prepare an automated script with regression testing for the mentioned site, encompassing the two test conditions
 
-Cadastro e Login. O que será avaliado? 
-- Capacidade de organização
-- Clareza
-- Domínio das atividades de testes
-- Objetividade dos testes
-- Critérios de cobertura usados na decisão de cada teste escrito.
+What will be evaluated?
+- Organizational ability
+- Clarity
+- Proficiency in testing activities
+- Test objectivity
+- Coverage criteria used in the selection of each written test.
 
 ## Test Plan
 ### Functionalities
