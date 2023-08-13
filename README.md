@@ -38,7 +38,7 @@ Follow these steps to set up and run this project:
 
 
 ## Challenge Specification
-Para o site  [automationexercise](https://www.automationexercise.com/), realizar as seguintes atividades: 
+For the website [automationexercise](https://www.automationexercise.com/), perform the following activities: 
 
 1. Create a test plan and a testing strategy that cover the functionalities of "Login," "Registration," and the "Purchasing Process" on the site.
 2. Describe the testing activities used in the test planning.
