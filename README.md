@@ -1,4 +1,8 @@
+<img src="{https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E}" />
+<img src="{https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white}" />
+
 - [TDS Challenge](#tds-challenge)
+  - [How to Run](#how-to-run)
   - [Challenge Specification](#challenge-specification)
   - [Test Plan](#test-plan)
     - [Functionalities](#functionalities)
@@ -11,6 +15,23 @@
     - [Purchase Process](#purchase-process)
 
 # TDS Challenge
+
+## How to Run
+
+Follow these steps to set up and run this project:
+
+1. Make sure you have Node.js and npm (Node Package Manager) installed on your machine.
+
+2. Clone this repository to your local machine.
+3. Install the project dependencies by running:
+   ```bash
+   npm install
+   ```
+4. Open the Cypress GUI using:
+    ```bash
+    npx cypress open
+    ```
+
 
 ## Challenge Specification
 Para o site  [automationexercise](https://www.automationexercise.com/), realizar as seguintes atividades: 
