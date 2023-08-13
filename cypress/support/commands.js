@@ -11,6 +11,8 @@ Cypress.Commands.add("login", (user, shouldSucceed = true) => {
   signin.loginButton().click();
 
   shouldSucceed
-    ? home.loggedAs().should("contain.text", user.fullName)
-    : cy.contains("Your email or password is incorrect!").should("be.visible");
+    ? // if shouldSucceed is true, then the username should be visible in Header
+      home.loggedAs().should("contain.text", user.fullName)
+    : // if shouldSucceed is false, then the error message should be visible
+      cy.contains("Your email or password is incorrect!").should("be.visible");
 });

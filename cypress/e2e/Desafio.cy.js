@@ -19,11 +19,16 @@ beforeEach(() => {
   cy.visit("/");
 });
 describe("Challenges", () => {
-  it("Register new user", () => {
+  it("Successful Registration", () => {
+    // Click on the 'Signup/Login' button on the homepage.
     home.signinSignupButton().click();
+
+    // Fill in the initial form in the "New User Signup" area and click on the "Signup" button.
     signin.signupName().type(userToRegister.fullName);
     signin.signupEmail().type(userToRegister.email);
     signin.signupButton().click();
+
+    // Fill the rest of the form and click on 'Create Account' button
     signup.genderRadius(userToRegister.gender);
     signup.name().should("have.value", userToRegister.fullName);
     signup.email().should("have.value", userToRegister.email);
@@ -42,38 +47,52 @@ describe("Challenges", () => {
     signup.zipCode().type(userToRegister.zipCode);
     signup.mobileNumber().type(userToRegister.mobileNumber);
     signup.createAccountButton().click();
+
+    // Verify if the "Account Created!" message is displayed.
     signup.createAccountResult().should("contain.text", "Account Created!");
     signup.continueButton().click();
+
+    // Check if the username is displayed in the Header of the page
     home.loggedAs().should("contain.text", userToRegister.fullName);
+
+    // Click the "Delete Account" button and verify if the "Account Deleted!" message is displayed.
     home.deleteAccountButton().click();
     home.deleteAccountResult().should("contain.text", "Account Deleted!");
   });
 
-  it("Login with registered user", () => {
+  it("Successful Login", () => {
+    // Login function details in cypress/support/commands.js
     cy.login(registeredUser);
   });
 
-  it("Login with unregistered user", () => {
+  it("Login Failure", () => {
+    // Login function details in cypress/support/commands.js
     cy.login(userToFailLogin, false);
   });
-  it.only("Shopping cart", () => {
-    let productName;
+  it("Purchase Process", () => {
+    // Login function details in cypress/support/commands.js
     cy.login(registeredUser);
 
-    // Adicionando produto ao carrinho
+    // Navigate to the products page.
     home.productsButton().click();
+
+    // Add a product to the cart.
     products.addProductToCart(1).click();
+
+    // Go to the cart.
     products.continueShoppingButton().click();
 
-    // Verificando se o produto foi adicionado ao carrinho corretamente
+    // Verify if the correct product name is displayed in the cart.
     products.getProductTitle(1).then(($productTitle) => {
-      productName = $productTitle.text().trim();
+      const productName = $productTitle.text().trim();
       home.cartButton().click();
       cart.getItemName(1).should("contain.text", productName);
     });
+
+    // Proceed to checkout.
     cart.procceedButton().click();
 
-    // Veriricando dados de entrega
+    // Verify if the delivery details match those of the user.
     cart.deliveryName().should("contain", registeredUser.firstName);
     cart.deliveryAddress().should("contain", registeredUser.address);
     cart.deliveryCity().should("contain", registeredUser.city);
@@ -81,15 +100,15 @@ describe("Challenges", () => {
     cart.deliveryPhone().should("contain", registeredUser.mobileNumber);
     cart.placeOrderButton().click();
 
-    // Informando dados do cartão
+    // Fill in the payment card details.
     cart.nameOnCard().type(registeredUser.card.name);
     cart.cardNumber().type(registeredUser.card.number);
     cart.cvv().type(registeredUser.card.cvv);
     cart.expiryMonth().type(registeredUser.card.expiryMonth);
     cart.expiryYear().type(registeredUser.card.expiryYear);
-    cart.payConfirmButton().click();
 
-    // Verificando confirmação do pedido
+    // Confirm payment and verify if the "Order Placed!" message is displayed.
+    cart.payConfirmButton().click();
     cart.orderConfirmation().should("contain", "Order Placed!");
   });
 });
