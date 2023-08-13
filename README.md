@@ -1,5 +1,7 @@
+<p align="center">
 <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
 <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" />
+</p>
 
 - [TDS Challenge](#tds-challenge)
   - [How to Run](#how-to-run)
