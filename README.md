@@ -3,22 +3,18 @@
 <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" />
 </p>
 
-- [Desafio TDS](#desafio-tds)
-  - [Como executar](#como-executar)
-  - [Especificação do desafio](#especificação-do-desafio)
-  - [Plano de Testes](#plano-de-testes)
-    - [Funcionalidades:](#funcionalidades)
-    - [Cenários Principais:](#cenários-principais)
-    - [Abordagem de Testes:](#abordagem-de-testes)
-  - [Atividade dos Testes](#atividade-dos-testes)
-    - [Cadastro bem-sucedido](#cadastro-bem-sucedido)
-    - [Login bem-sucedido](#login-bem-sucedido)
-    - [Falha no Login](#falha-no-login)
-    - [Processo de Compra](#processo-de-compra)
 
-# Desafio TDS
-
-> Este repositório é voltado para o desafio do processo seletivo da TDS Company
+- [Como executar](#como-executar)
+- [Especificação do desafio](#especificação-do-desafio)
+- [Plano de Testes](#plano-de-testes)
+  - [Funcionalidades:](#funcionalidades)
+  - [Cenários Principais:](#cenários-principais)
+  - [Abordagem de Testes:](#abordagem-de-testes)
+- [Atividade dos Testes](#atividade-dos-testes)
+  - [Cadastro bem-sucedido](#cadastro-bem-sucedido)
+  - [Login bem-sucedido](#login-bem-sucedido)
+  - [Falha no Login](#falha-no-login)
+  - [Processo de Compra](#processo-de-compra)
 
 ## Como executar
 
@@ -35,19 +31,11 @@ Siga estes passos para configurar e executar este projeto:
     npx cypress open
     ```
 
-## Especificação do desafio
+## Especificação
 Para o site  [automationexercise](https://www.automationexercise.com/), realizar as seguintes atividades: 
 
-1. Montar um plano de testes e uma estratégia de testes que cubram as funcionalidades de "Login" e "Cadastro" e processo de compra no site 
-2. Descrever as atividades de testes usadas no planejamento dos testes 
-3. Preparar um script automatizado com teste de regressão para o site citado, contendo as duas condições de testes abordadas: Cadastro e Login.  
-
-O que será avaliado?
-- Capacidade de organização
-- Clareza
-- Domínio das atividades de testes
-- Objetividade dos testes
-- Critérios de cobertura usados na decisão de cada teste escrito.
+- [x] Plano de testes e estratégia que cubra as funcionalidades de "Login", "Cadastro" e "Processo de Compra" no site 
+- [x] Preparar um script automatizado com teste de regressão para o site citado, contendo as duas condições de testes abordadas: Cadastro e Login.  
 
 ## Plano de Testes
 
